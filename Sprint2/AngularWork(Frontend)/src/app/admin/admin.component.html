@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-header">
+      Admin Workplace
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Hi Admin!</h5>
+      <p class="card-text">You Are The Real Master Of Quiz</p>
+      <button class="btn btn-primary"(click)="OnCrud()">CRUD On Ques</button>&nbsp;&nbsp;
+      <button class="btn btn-primary"(click)="NoCrud()">Register</button>
+    </div>
+  </div>
+
+<div *ngIf="select">
+ <br>
+ <br>   
+<app-ques-crud></app-ques-crud>
+</div>
+<div *ngIf="select1">
+    <br>
+    <br>   
+   <app-register></app-register>>
+   </div>
+   
