@@ -1,0 +1,50 @@
+TABLE USER:
+----------------
+
+| user  | CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL,
+  `is_admin` bit(1) DEFAULT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `user_password` varchar(255) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 |
++-------+-----------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| user_id       | int(11)      | NO   | PRI | NULL    |       |
+| is_admin      | bit(1)       | YES  |     | NULL    |       |
+| user_name     | varchar(255) | NO   |     | NULL    |       |
+| user_password | varchar(255) | NO   |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+
+
+
+TABLE QUESTIONS:
+---------------------+
+| questions | CREATE TABLE `questions` (
+  `question_id` int(11) NOT NULL AUTO_INCREMENT,
+  `chosen_answer` int(11) DEFAULT NULL,
+  `marks_scored` decimal(19,2) DEFAULT NULL,
+  `question_answer` int(11) NOT NULL,
+  `question_marks` int(11) NOT NULL,
+  `question_options` tinyblob,
+  `question_title` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`question_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 |
++-----------+-------------------------------------------------------------------
++------------------+---------------+------+-----+---------+----------------+
+| Field            | Type          | Null | Key | Default | Extra          |
++------------------+---------------+------+-----+---------+----------------+
+| question_id      | int(11)       | NO   | PRI | NULL    | auto_increment |
+| chosen_answer    | int(11)       | YES  |     | NULL    |                |
+| marks_scored     | decimal(19,2) | YES  |     | NULL    |                |
+| question_answer  | int(11)       | NO   |     | NULL    |                |
+| question_marks   | int(11)       | NO   |     | NULL    |                |
+| question_options | tinyblob      | YES  |     | NULL    |                |
+| question_title   | varchar(255)  | YES  |     | NULL    |                |
++------------------+---------------+------+-----+---------+----------------+
+
+
