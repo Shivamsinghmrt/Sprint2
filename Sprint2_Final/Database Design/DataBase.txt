@@ -1,0 +1,61 @@
+
+
+TEST TABLE:---
+-------------------------------------------------+
+| test  | CREATE TABLE `test` (
+  `test_id` int(11) NOT NULL AUTO_INCREMENT,
+  `end_time` datetime(6) DEFAULT NULL,
+  `start_time` datetime(6) DEFAULT NULL,
+  `test_duration` time DEFAULT NULL,
+  `test_marks_scored` decimal(19,2) DEFAULT NULL,
+  `test_title` varchar(255) NOT NULL,
+  `test_total_marks` decimal(19,2) DEFAULT NULL,
+  `user_user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`test_id`),
+  KEY `FKnxvf5ujt9jto3mblw67qwrp55` (`user_user_id`),
+  CONSTRAINT `FKnxvf5ujt9jto3mblw67qwrp55` FOREIGN KEY (`user_user_id`) REFERENC
+ES `user` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 |
+
++-------+-----------------------------------------------------------------------
+
+
+
+
+USER TABLE:--
+--------------------------------------------------+
+| user  | CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL,
+  `is_admin` bit(1) DEFAULT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `user_password` varchar(255) NOT NULL,
+  `user_test_test_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  KEY `FKduj9slu7ek7f2difed2gu99cm` (`user_test_test_id`),
+  CONSTRAINT `FKduj9slu7ek7f2difed2gu99cm` FOREIGN KEY (`user_test_test_id`) REF
+ERENCES `test` (`test_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 |
++-------+-----------------------------------------------------------------------
+
+
+QUESTIONS TABLE:--
+----------------------------------------------------------------------------
+| question | CREATE TABLE `question` (
+  `question_id` int(11) NOT NULL AUTO_INCREMENT,
+  `chosen_answer` int(11) DEFAULT NULL,
+  `marks_scored` decimal(19,2) DEFAULT NULL,
+  `question_answer` int(11) NOT NULL,
+  `question_marks` int(11) NOT NULL,
+  `question_options` tinyblob,
+  `question_title` varchar(255) DEFAULT NULL,
+  `testid` int(11) DEFAULT NULL,
+  `user_user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`question_id`),
+  KEY `FKisqd64a7oqr5gd57690rk2cgx` (`testid`),
+  KEY `FK2y2eri8arepgadd80u4xhvv00` (`user_user_id`),
+  CONSTRAINT `FK2y2eri8arepgadd80u4xhvv00` FOREIGN KEY (`user_user_id`) REFERENC
+ES `user` (`user_id`),
+  CONSTRAINT `FKisqd64a7oqr5gd57690rk2cgx` FOREIGN KEY (`testid`) REFERENCES `te
+st` (`test_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 |
++----------+--------------------------------------------------------------------
