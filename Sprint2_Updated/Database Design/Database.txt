@@ -1,30 +1,46 @@
-TABLE USER:
-----------------
 
+
+TEST TABLE:---
+-------------------------------------------------+
+| test  | CREATE TABLE `test` (
+  `test_id` int(11) NOT NULL AUTO_INCREMENT,
+  `end_time` datetime(6) DEFAULT NULL,
+  `start_time` datetime(6) DEFAULT NULL,
+  `test_duration` time DEFAULT NULL,
+  `test_marks_scored` decimal(19,2) DEFAULT NULL,
+  `test_title` varchar(255) NOT NULL,
+  `test_total_marks` decimal(19,2) DEFAULT NULL,
+  `user_user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`test_id`),
+  KEY `FKnxvf5ujt9jto3mblw67qwrp55` (`user_user_id`),
+  CONSTRAINT `FKnxvf5ujt9jto3mblw67qwrp55` FOREIGN KEY (`user_user_id`) REFERENC
+ES `user` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 |
+
++-------+-----------------------------------------------------------------------
+
+
+
+
+USER TABLE:--
+--------------------------------------------------+
 | user  | CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `is_admin` bit(1) DEFAULT NULL,
   `user_name` varchar(255) NOT NULL,
   `user_password` varchar(255) NOT NULL,
-  PRIMARY KEY (`user_id`)
+  `user_test_test_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  KEY `FKduj9slu7ek7f2difed2gu99cm` (`user_test_test_id`),
+  CONSTRAINT `FKduj9slu7ek7f2difed2gu99cm` FOREIGN KEY (`user_test_test_id`) REF
+ERENCES `test` (`test_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 |
 +-------+-----------------------------------------------------------------------
---------------------------------------------------------------------------------
-
-+---------------+--------------+------+-----+---------+-------+
-| Field         | Type         | Null | Key | Default | Extra |
-+---------------+--------------+------+-----+---------+-------+
-| user_id       | int(11)      | NO   | PRI | NULL    |       |
-| is_admin      | bit(1)       | YES  |     | NULL    |       |
-| user_name     | varchar(255) | NO   |     | NULL    |       |
-| user_password | varchar(255) | NO   |     | NULL    |       |
-+---------------+--------------+------+-----+---------+-------+
 
 
-
-TABLE QUESTIONS:
----------------------+
-| questions | CREATE TABLE `questions` (
+QUESTIONS TABLE:--
+----------------------------------------------------------------------------
+| question | CREATE TABLE `question` (
   `question_id` int(11) NOT NULL AUTO_INCREMENT,
   `chosen_answer` int(11) DEFAULT NULL,
   `marks_scored` decimal(19,2) DEFAULT NULL,
@@ -32,19 +48,14 @@ TABLE QUESTIONS:
   `question_marks` int(11) NOT NULL,
   `question_options` tinyblob,
   `question_title` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`question_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 |
-+-----------+-------------------------------------------------------------------
-+------------------+---------------+------+-----+---------+----------------+
-| Field            | Type          | Null | Key | Default | Extra          |
-+------------------+---------------+------+-----+---------+----------------+
-| question_id      | int(11)       | NO   | PRI | NULL    | auto_increment |
-| chosen_answer    | int(11)       | YES  |     | NULL    |                |
-| marks_scored     | decimal(19,2) | YES  |     | NULL    |                |
-| question_answer  | int(11)       | NO   |     | NULL    |                |
-| question_marks   | int(11)       | NO   |     | NULL    |                |
-| question_options | tinyblob      | YES  |     | NULL    |                |
-| question_title   | varchar(255)  | YES  |     | NULL    |                |
-+------------------+---------------+------+-----+---------+----------------+
-
-
+  `testid` int(11) DEFAULT NULL,
+  `user_user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`question_id`),
+  KEY `FKisqd64a7oqr5gd57690rk2cgx` (`testid`),
+  KEY `FK2y2eri8arepgadd80u4xhvv00` (`user_user_id`),
+  CONSTRAINT `FK2y2eri8arepgadd80u4xhvv00` FOREIGN KEY (`user_user_id`) REFERENC
+ES `user` (`user_id`),
+  CONSTRAINT `FKisqd64a7oqr5gd57690rk2cgx` FOREIGN KEY (`testid`) REFERENCES `te
+st` (`test_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 |
++----------+--------------------------------------------------------------------
