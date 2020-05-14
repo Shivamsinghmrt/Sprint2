@@ -56,9 +56,9 @@
              <form *ngIf="!user.isAdmin" #userlogin = "ngForm" (ngSubmit) = "assignTest(userlogin.value,user.userId)" >
               <input type="number" class="form-control" id="id"    name="TestID" ngModel>
               <input type = "submit" value = "Assign Test">
-            </form>
+             </form>
           </td>
-             
+             <td *ngIf="!user.isAdmin"><button class="btn btn-primary"(click)="DeleteUser(user.userId)">Delete User</button></td>
              
              </tr>
              </tbody>
