@@ -141,5 +141,8 @@ addTest(tid:number,testTitle:Text,testDuration:Text,testQuestions:any[]){
   
   return this.http.put('http://localhost:9094/test/addTest', body,{responseType:'text'});
 }
-
+DeleteUser(userId:number){
+  this.userId=userId;
+  return this.http.delete('http://localhost:9094/User/deleteUser/'+this.userId,{responseType:'text'});
+}
 }
