@@ -185,6 +185,16 @@ this.Q2id=null;
 }
 
 
+DeleteUser(userId:number)
+
+{
+  this.userId=userId;
+  this.quizService.DeleteUser(this.userId).subscribe((data)=>{
+    this.showUsers();
+  })
+
+}
+
 ngOnDestroy(): void{
 
   localStorage.clear();
